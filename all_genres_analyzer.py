@@ -29,11 +29,26 @@ for genre in genres:
 
 	plt.show()
 
+for genre in genres:
+	genre_df = tracks.loc[tracks['Genre'] == genre]
+	print(genre)
 
-all_tracks_keys = tracks['Key'].value_counts()
+
+	print(genre_df['BPM'].value_counts())
+	# keyArray = genre_df['Key'].value_counts()
+	# print(str(keyArray.size())
+
+	keyArray = genre_df['BPM'].value_counts()
+
+	bar = keyArray.plot.bar(title=genre + " tracks by bpm")
+
+	plt.show()
+
+
+all_tracks_keys = tracks['BPM'].value_counts()
 
 print(all_tracks_keys)
 
-graph = all_tracks_keys.plot.bar(title="All tracks by key")
+graph = all_tracks_keys.plot.bar(title="All tracks by BPM")
 
 plt.show()
