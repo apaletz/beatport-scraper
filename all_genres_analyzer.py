@@ -19,7 +19,7 @@ def chart_maker(criteria):
 		print(genre_df[criteria].value_counts())
 		criteriaArray = genre_df[criteria].value_counts()
 
-		bar = criteriaArray.plot.bar(title=genre + 'tracks by ' + criteria)
+		bar = criteriaArray.plot.bar(title=genre + ' tracks by ' + criteria)
 		plt.show()
 
 #a function to create bar charts that show a given criteria for all tracks
