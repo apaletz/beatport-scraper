@@ -57,26 +57,18 @@ track_links = open("TrackLinks.txt", "w")
 #itterate through url list and scrape data for each url
 
 for url in genre_urls:
+	print("here")
 	genre_response = urllib2.urlopen(url)
 	genre_html = genre_response.read()
 	genre_soup = soup(genre_html, features='html.parser')
-
 	#make buckets out of each track's div
 	buckets = genre_soup.findAll("li", {"class":"bucket-item ec-item track"})
-
-	# genre = url.split('/')[4]
-
-	# with open('all_genres.csv', 'wb') as all_genres_csv:
-	# 	filewriter = csv.writer(all_genres_csv, delimiter=',')
-	# 	filewriter.writerow('Artist', 'Title', 'Key', 'BPM', 'Genre')
-
-	#make a text file of all the links
-
-
+	#
 	for bucket in buckets:
 		link = "https://www.beatport.com/" + bucket.find("p", {"class":'buk-track-title'}).a['href']
 
 		track_links.write(link + "\n")
+		print("wrote a line")
 
 		# track_url = link
 
